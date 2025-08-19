@@ -10,3 +10,5 @@ Monsters, running, walls and exessive gun violence, explosions, procedural gener
 ## Goal
 We wanna make a polished and good feeling game.
 If it feels good, we is good.
+
+made with ❤️ and caffeine
