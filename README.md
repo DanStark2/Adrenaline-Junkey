@@ -1,2 +1,11 @@
 # Sore-Floor
-Game
+A small experimental game project.
+
+## About
+...
+
+## Features
+...
+
+## Goal
+...
