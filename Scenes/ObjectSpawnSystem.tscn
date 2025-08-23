@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4pkmmdklo0tq"]
+
+[ext_resource type="Script" uid="uid://cmvs3r4p5j1he" path="res://Scripts/object_spawn_system.gd" id="1_os6t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os6t7"]
+size = Vector2(1134, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdgai"]
+size = Vector2(62.5, 710.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83w66"]
+size = Vector2(1134, 68)
+
+[node name="ObjectSpawnSystem" type="Node2D"]
+script = ExtResource("1_os6t7")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(572, 627.5)
+shape = SubResource("RectangleShape2D_os6t7")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(-26, 296.75)
+shape = SubResource("RectangleShape2D_qdgai")
+
+[node name="Collider2" type="StaticBody2D" parent="."]
+position = Vector2(1203, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+position = Vector2(-32.75, 298.25)
+shape = SubResource("RectangleShape2D_qdgai")
+
+[node name="Roof" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(572, -24)
+shape = SubResource("RectangleShape2D_83w66")

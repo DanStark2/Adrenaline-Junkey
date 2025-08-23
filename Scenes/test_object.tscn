@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chfuat1eluta1"]
+
+[ext_resource type="Script" uid="uid://brvvudk3v13w5" path="res://Scripts/test_object.gd" id="1_detjb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ap2wr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_detjb"]
+
+[node name="TestObject" type="StaticBody2D"]
+script = ExtResource("1_detjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ap2wr")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_detjb")

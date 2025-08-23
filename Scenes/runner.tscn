@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://byf7rb03kwwwj"]
+[gd_scene load_steps=6 format=3 uid="uid://byf7rb03kwwwj"]
 
 [ext_resource type="Texture2D" uid="uid://ciyq7llj3o6uf" path="res://Assets/Sprites/SoreBoiph1.png" id="1_m3p76"]
+[ext_resource type="Script" uid="uid://ccgv3pp35vijo" path="res://Scripts/runner.gd" id="1_usyiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pwe8"]
 atlas = ExtResource("1_m3p76")
@@ -21,6 +22,8 @@ animations = [{
 size = Vector2(16, 17)
 
 [node name="Runner" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_usyiy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, -16)
