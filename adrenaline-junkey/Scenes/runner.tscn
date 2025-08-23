@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://byf7rb03kwwwj"]
+
+[ext_resource type="Texture2D" uid="uid://ciyq7llj3o6uf" path="res://Assets/Sprites/SoreBoiph1.png" id="1_m3p76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pwe8"]
+atlas = ExtResource("1_m3p76")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfbw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pwe8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7b3c"]
+size = Vector2(16, 17)
+
+[node name="Runner" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, -16)
+sprite_frames = SubResource("SpriteFrames_hfbw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, -8.5)
+shape = SubResource("RectangleShape2D_f7b3c")
