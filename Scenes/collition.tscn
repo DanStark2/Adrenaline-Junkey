@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxp16qibav5jf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyyr5"]
+size = Vector2(1134, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kfae"]
+size = Vector2(62.5, 710.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58nko"]
+size = Vector2(1134, 68)
+
+[node name="Collition" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(-1290, -597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(572, 627.5)
+shape = SubResource("RectangleShape2D_jyyr5")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+position = Vector2(-1290, -597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(-26, 296.75)
+shape = SubResource("RectangleShape2D_6kfae")
+
+[node name="Collider2" type="StaticBody2D" parent="."]
+position = Vector2(-87, -598)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider2"]
+position = Vector2(-32.75, 298.25)
+shape = SubResource("RectangleShape2D_6kfae")
+
+[node name="Roof" type="StaticBody2D" parent="."]
+position = Vector2(-1290, -597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(572, -24)
+shape = SubResource("RectangleShape2D_58nko")

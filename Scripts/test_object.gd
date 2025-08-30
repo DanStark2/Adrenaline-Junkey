@@ -1,14 +1,24 @@
 extends StaticBody2D
 
-var spd := 50
-# Called when the node enters the scene tree for the first time.
+@export var speed: float = 200.0        # pixels/sec
+@export var lifetime: float = 8.0      # seconds before auto-delete
+var _velocity: Vector2 = Vector2.RIGHT # default direction
+
 func _ready() -> void:
-	pass # Replace with function body.
+	# Auto-despawn after `lifetime`
+	despawn_after(lifetime)
 
+func _physics_process(delta: float) -> void:
+	position -= _velocity * speed * delta
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func start(spd: float) -> void:
+	speed = spd
 
-func start(spd:int):
-	pass
+func set_direction(dir: Vector2) -> void:
+	# Optional: set custom direction (e.g., to shoot left: set_direction(Vector2.LEFT))
+	_velocity = dir.normalized()
+
+func despawn_after(seconds: float) -> void:
+	# Wait then yeet
+	await get_tree().create_timer(seconds).timeout
+	queue_free()

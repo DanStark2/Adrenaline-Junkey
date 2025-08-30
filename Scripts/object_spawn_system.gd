@@ -1,11 +1,31 @@
 extends Node2D
 
+@export var ground_pieces: Array[PackedScene]    # drag your ground scenes into here
+@export var spawn_interval: float = 1.0          # how often to spawn
+@export var speed: float = 300.0                 # universal speed for all spawned pieces
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# start spawning on repeat
+	spawn_loop()
 
+func spawn_loop() -> void:
+	while true:
+		spawn_piece()
+		await get_tree().create_timer(spawn_interval).timeout
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func spawn_piece() -> void:
+	if ground_pieces.is_empty():
+		return
+
+	# pick one at random, or cycle if you want
+	var scene: PackedScene = ground_pieces.pick_random()
+	var piece = scene.instantiate()
+	
+	# place it at spawner’s position
+	piece.position = position
+	
+	# set the universal speed
+	piece.start(speed)
+	
+	# throw it into the scene
+	get_parent().add_child(piece)
