@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var ground_pieces: Array[PackedScene]    # drag your ground scenes into here
-@export var spawn_interval: float = 1.0          # how often to spawn
+@export var spawn_interval: float = 1.29      # how often to spawn
 @export var speed: float = 300.0                 # universal speed for all spawned pieces
 
 func _ready() -> void:
@@ -28,4 +28,4 @@ func spawn_piece() -> void:
 	piece.start(speed)
 	
 	# throw it into the scene
-	get_parent().add_child(piece)
+	get_parent().add_child.call_deferred(piece)

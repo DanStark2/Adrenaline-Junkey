@@ -4,6 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://chfuat1eluta1" path="res://Scenes/test_object.tscn" id="2_qdgai"]
 [ext_resource type="PackedScene" uid="uid://bcpnwqevjx7xq" path="res://Scenes/ground2.tscn" id="3_83w66"]
 
-[node name="ObjectSpawnSystem" type="Node2D"]
+[node name="GroundSpawnSystem" type="Node2D"]
 script = ExtResource("1_os6t7")
 ground_pieces = Array[PackedScene]([ExtResource("2_qdgai"), ExtResource("3_83w66")])

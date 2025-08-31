@@ -27,9 +27,29 @@ scale = Vector2(4, 4)
 script = ExtResource("1_usyiy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(16, -16)
+z_index = 1
+position = Vector2(1, -7.5)
 sprite_frames = SubResource("SpriteFrames_hfbw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15, -8.5)
 shape = SubResource("RectangleShape2D_f7b3c")
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="whileDashing" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="GrappleLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+width = 3.0
+default_color = Color(0.593134, 0.593134, 0.593134, 1)
+
+[node name="GrappleTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="whileDashing" to="." method="_on_while_dashing_timeout"]
+[connection signal="timeout" from="GrappleTimer" to="." method="_on_grapple_timer_timeout"]

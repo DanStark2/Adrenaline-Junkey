@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk13owjev050s"]
+
+[ext_resource type="Script" uid="uid://brvvudk3v13w5" path="res://Scripts/test_object.gd" id="1_8of70"]
+[ext_resource type="Texture2D" uid="uid://vnl1s7scrmrf" path="res://Assets/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png" id="2_rovb7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8of70"]
+size = Vector2(33, 32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_detjb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u5w2"]
+atlas = ExtResource("2_rovb7")
+region = Rect2(95, 0, 33, 32)
+
+[node name="Objext" type="StaticBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_8of70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8of70")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_detjb")
+texture = SubResource("AtlasTexture_0u5w2")

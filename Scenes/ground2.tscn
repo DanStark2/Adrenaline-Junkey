@@ -1,35 +1,28 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcpnwqevjx7xq"]
 
 [ext_resource type="Script" uid="uid://brvvudk3v13w5" path="res://Scripts/test_object.gd" id="1_fo8ri"]
+[ext_resource type="Texture2D" uid="uid://vnl1s7scrmrf" path="res://Assets/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png" id="2_2puns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap2wr"]
-size = Vector2(92, 20)
+size = Vector2(96, 32)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fo8ri"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2puns"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_fo8ri"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pkd"]
+atlas = ExtResource("2_2puns")
+region = Rect2(0, 0, 96, 32)
 
 [node name="TestObject" type="StaticBody2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_fo8ri")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_ap2wr")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.234805, 0.536213, 0.307777, 1)
 material = SubResource("CanvasItemMaterial_fo8ri")
-position = Vector2(7.62939e-06, 10)
-scale = Vector2(382, 40)
-texture = SubResource("CanvasTexture_2puns")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.737887, 0.573809, 0.334228, 1)
-material = SubResource("CanvasItemMaterial_fo8ri")
-position = Vector2(9.65595e-06, -401.865)
-scale = Vector2(382, 799.73)
-texture = SubResource("CanvasTexture_fo8ri")
+position = Vector2(7.62939e-06, -22)
+texture = SubResource("AtlasTexture_b4pkd")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://pxpk11wy1xoi"]
+
+[ext_resource type="Script" uid="uid://cmvs3r4p5j1he" path="res://Scripts/object_spawn_system.gd" id="1_rq0dy"]
+[ext_resource type="PackedScene" uid="uid://bk13owjev050s" path="res://Scenes/objext.tscn" id="2_b713b"]
+
+[node name="ObjectSpawnSystem" type="Node2D"]
+script = ExtResource("1_rq0dy")
+ground_pieces = Array[PackedScene]([ExtResource("2_b713b")])
+spawn_interval = 10.0

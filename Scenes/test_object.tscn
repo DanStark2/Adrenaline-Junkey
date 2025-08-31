@@ -1,34 +1,28 @@
 [gd_scene load_steps=6 format=3 uid="uid://chfuat1eluta1"]
 
 [ext_resource type="Script" uid="uid://brvvudk3v13w5" path="res://Scripts/test_object.gd" id="1_detjb"]
+[ext_resource type="Texture2D" uid="uid://vnl1s7scrmrf" path="res://Assets/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png" id="2_lhkt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap2wr"]
-size = Vector2(92, 20)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_detjb"]
+size = Vector2(96, 48)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_detjb"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_lhkt7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1e3l"]
+atlas = ExtResource("2_lhkt7")
+region = Rect2(0, 32, 96, 96)
 
 [node name="TestObject" type="StaticBody2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_detjb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_ap2wr")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.72091, 0.974413, 0.577936, 1)
-position = Vector2(7.62939e-06, 10)
-scale = Vector2(382, 40)
-texture = SubResource("CanvasTexture_detjb")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.836483, 0.659411, 0.455015, 1)
+[node name="Sprite2D3" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_detjb")
-position = Vector2(0, -96)
-scale = Vector2(382, 171.08)
-texture = SubResource("CanvasTexture_lhkt7")
+position = Vector2(7.62939e-06, 10)
+texture = SubResource("AtlasTexture_m1e3l")
