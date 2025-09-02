@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://m0pqbcdsnsdw"]
+[gd_scene load_steps=7 format=3 uid="uid://m0pqbcdsnsdw"]
 
 [ext_resource type="PackedScene" uid="uid://byf7rb03kwwwj" path="res://Scenes/runner.tscn" id="1_e5tc5"]
 [ext_resource type="PackedScene" uid="uid://c4pkmmdklo0tq" path="res://Scenes/ObjectSpawnSystem.tscn" id="2_mw53j"]
 [ext_resource type="PackedScene" uid="uid://cxp16qibav5jf" path="res://Scenes/collition.tscn" id="3_jxn3d"]
 [ext_resource type="PackedScene" uid="uid://bcpnwqevjx7xq" path="res://Scenes/ground2.tscn" id="4_ow5sp"]
 [ext_resource type="PackedScene" uid="uid://pxpk11wy1xoi" path="res://Scenes/object_spawn_system.tscn" id="5_pshbh"]
+[ext_resource type="PackedScene" uid="uid://bn5o3v6ciq2j3" path="res://Scenes/bakcgound.tscn" id="6_86rdm"]
 
 [node name="Demo1" type="Node2D"]
 
@@ -45,3 +46,7 @@ speed = 300.0
 
 [node name="ObjectSpawnSystem" parent="." instance=ExtResource("5_pshbh")]
 position = Vector2(1359, 105)
+
+[node name="Bakcgound" parent="." instance=ExtResource("6_86rdm")]
+z_index = -3
+position = Vector2(-591, -345)
