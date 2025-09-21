@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqud4gxlb4464"]
+
+[ext_resource type="FontFile" uid="uid://6ol1bi1tuda" path="res://Assets/Tinybutserious.ttf" id="1_7kc6r"]
+[ext_resource type="Script" uid="uid://52e3ncifq054" path="res://Scenes/play.gd" id="1_dm5w0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dm5w0"]
+font = ExtResource("1_7kc6r")
+font_size = 128
+font_color = Color(7.315874e-06, 0.924878, 0.23261154, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cuppe"]
+
+[node name="Play" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dm5w0")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "PLAY"
+label_settings = SubResource("LabelSettings_dm5w0")
+
+[node name="Button" type="Button" parent="CenterContainer/Label"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = -67.0
+offset_right = 427.0
+offset_bottom = 206.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+self_modulate = Color(0.4390491, 0.43904912, 0.43904912, 0.17254902)
+z_index = 11
+position = Vector2(615, 307)
+scale = Vector2(2000, 1000)
+texture = SubResource("CanvasTexture_cuppe")
+
+[connection signal="pressed" from="CenterContainer/Label/Button" to="." method="_on_button_pressed"]

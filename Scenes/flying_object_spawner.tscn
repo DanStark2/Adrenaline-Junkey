@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvxjfcoc1y4ra"]
+
+[ext_resource type="Script" uid="uid://bu386aihuiskn" path="res://flying_object_spawner.gd" id="1_jqj06"]
+[ext_resource type="PackedScene" uid="uid://c4guruor2usn2" path="res://Scenes/FLYINGOBJECT.tscn" id="2_ghbrj"]
+
+[node name="FlyingObjectSpawner" type="Node2D"]
+script = ExtResource("1_jqj06")
+pieces = Array[PackedScene]([ExtResource("2_ghbrj")])

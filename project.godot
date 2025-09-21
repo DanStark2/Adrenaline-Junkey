@@ -11,12 +11,24 @@ config_version=5
 [application]
 
 config/name="Adrenaline junkey"
-run/main_scene="uid://m0pqbcdsnsdw"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/version="ALPHA-1"
+run/main_scene="uid://cqud4gxlb4464"
+config/features=PackedStringArray("4.5", "Forward Plus")
+
+[autoload]
+
+Globals="*res://Scripts/global.gd"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[global_group]
+
+DamageOverlay=""
+player=""
+GOOL=""
+TIMER=""
 
 [input]
 

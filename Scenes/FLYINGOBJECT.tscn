@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4guruor2usn2"]
+
+[ext_resource type="Script" uid="uid://c8wbbs8c68bw2" path="res://Scenes/flyingobject.gd" id="1_f26b7"]
+[ext_resource type="Texture2D" uid="uid://vnl1s7scrmrf" path="res://Assets/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1.png" id="2_3e515"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8of70"]
+size = Vector2(33, 32)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_detjb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u5w2"]
+atlas = ExtResource("2_3e515")
+region = Rect2(95, 0, 33, 32)
+
+[sub_resource type="Animation" id="Animation_3e515"]
+resource_name = "SPIN"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_lgnh3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6yks"]
+_data = {
+&"RESET": SubResource("Animation_lgnh3"),
+&"SPIN": SubResource("Animation_3e515")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f26b7"]
+size = Vector2(38.5, 37.5)
+
+[node name="FLYINGOBJECT" type="StaticBody2D"]
+position = Vector2(0, -241)
+scale = Vector2(4, 4)
+script = ExtResource("1_f26b7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8of70")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_detjb")
+texture = SubResource("AtlasTexture_0u5w2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k6yks")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_f26b7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

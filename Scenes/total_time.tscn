@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7whv440q7wqo"]
+
+[ext_resource type="FontFile" uid="uid://6ol1bi1tuda" path="res://Assets/Tinybutserious.ttf" id="1_1gnji"]
+[ext_resource type="Script" uid="uid://dyyia2lwqg5wp" path="res://label.gd" id="2_3voet"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0qbis"]
+font = ExtResource("1_1gnji")
+font_size = 64
+
+[node name="TOTAL_TIME" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TIMECENTER" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 778.0
+offset_right = 918.0
+offset_bottom = 65.0
+
+[node name="Label" type="Label" parent="TIMECENTER" groups=["TIMER"]]
+layout_mode = 2
+text = "TIME"
+label_settings = SubResource("LabelSettings_0qbis")
+script = ExtResource("2_3voet")

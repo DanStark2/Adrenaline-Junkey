@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsof6o6v8kvbs"]
+
+[ext_resource type="Script" uid="uid://con0ysqh5vqmx" path="res://damage_overlay.gd" id="1_gly2d"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hypbt"]
+
+[sub_resource type="Animation" id="Animation_w7nbr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7137255, 0.03137255, 0, 0.043137256)]
+}
+
+[sub_resource type="Animation" id="Animation_t5pvm"]
+resource_name = "damage"
+length = 1.9
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 0.01
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 1.4666667, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.7137255, 0.03137255, 0, 0), Color(0.7137255, 0.03137255, 0, 0.043137256), Color(0.70980394, 0.03137255, 0, 0.94509804), Color(0.7137255, 0.03137255, 0, 0.101960786), Color(0.7137255, 0.03137255, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gg7g"]
+_data = {
+&"RESET": SubResource("Animation_w7nbr"),
+&"damage": SubResource("Animation_t5pvm")
+}
+
+[node name="DamageOverlay" type="Node2D" groups=["DamageOverlay"]]
+script = ExtResource("1_gly2d")
+
+[node name="DamageSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.7137255, 0.03137255, 0, 0.043137256)
+top_level = true
+z_index = 21
+position = Vector2(577.4999, 317.99997)
+scale = Vector2(1234.9999, 715.99994)
+texture = SubResource("CanvasTexture_hypbt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageSprite"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_8gg7g")
+}

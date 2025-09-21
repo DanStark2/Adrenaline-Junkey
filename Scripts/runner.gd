@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED_LEFT = 400.0   # faster left
+@export var HEALTH = 3   # faster left
 @export var SPEED_RIGHT = 200.0  # slower right
 @export var JUMP_VELOCITY = 500
 @export var GRAVITY_MULTIPLIER = 2
@@ -14,15 +15,25 @@ var CURRENTLY_DASHING = false
 @onready var GRAPPLE_LINE = $GrappleLine
 @onready var MOUSE_POS = get_global_mouse_position()
 @onready var GRAPPLE_TIMER = $GrappleTimer
+@onready var DAMAGE_OVERLAY = get_parent().get_node("DamageOverlay")
+@onready var ANIM = $AnimationPlayer
+@onready var DEATH_OVERLAY = get_parent().get_node("GameOverOverLay")
 
-
+func _ready() -> void:
+	position = Vector2.ZERO
 func _physics_process(delta: float) -> void:
 	
+	Globals.Health = HEALTH
+	
+	if HEALTH <= 0:
+		death()
+		
 	
 	
-	if Input.is_action_just_pressed("grapple"):
-		grapple()
-		velocity.y = clamp(velocity.y, -DASH_LENGH/4, DASH_LENGH/4)
+	
+	#if Input.is_action_just_pressed("grapple"):
+		#grapple()
+		#velocity.y = clamp(velocity.y, -DASH_LENGH/4, DASH_LENGH/4)
 	if !CURRENTLY_DASHING:
 		velocity.x = clamp(velocity.x, -SPEED_RIGHT, SPEED_RIGHT)
 	elif CURRENTLY_DASHING:
@@ -33,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle Dash
 	if Input.is_action_just_pressed("dash") and DASH_COOLDOWN.is_stopped():
+		$CPUParticles2D.emitting = true
 		CURRENTLY_DASHING = true
 		WHILE_DASHING.start(DASH_LENGTH_TIME)
 		velocity.x += DASH_LENGH
@@ -46,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump") and JUMPS>=1 and !is_on_floor():
 		JUMPS -= 1
 		velocity.y = -JUMP_VELOCITY
+		$CPUParticles2D.emitting = true
 
 	# Handle left/right input with different speeds.
 	var direction := Input.get_axis("left", "right")
@@ -76,8 +89,24 @@ func launch_to_mouse(force: float) -> void:
 	var mouse_global := get_global_mouse_position()
 	var dir := (mouse_global - global_position).normalized()
 	velocity = dir * force   # yeet the player
+func death():
+	if DEATH_OVERLAY.is_in_group("GOOL"):
+		DEATH_OVERLAY.visible = true
+		get_tree().paused = true
+	else: 
+		print("did not find 'DEATH_OVERLAY'")
+	
+func damage():
+	DAMAGE_OVERLAY.run()
+	HEALTH -= 1
+	ANIM.play("setback")
 	
 
 
 func _on_grapple_timer_timeout() -> void:
 	GRAPPLE_LINE.visible = false
+	
+func knockback(amount:int):
+	print("knockback:", amount)
+	velocity.x += amount * -1
+	

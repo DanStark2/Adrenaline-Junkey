@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://c34063jhjiv3b"]
+
+[ext_resource type="FontFile" uid="uid://6ol1bi1tuda" path="res://Assets/Tinybutserious.ttf" id="1_10n32"]
+[ext_resource type="Script" uid="uid://dhx3iax28sba" path="res://Scenes/game_over_over_lay.gd" id="1_rav7w"]
+[ext_resource type="Script" uid="uid://cpu41aa87fdmy" path="res://Scenes/label_2.gd" id="2_742re"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_742re"]
+font = ExtResource("1_10n32")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_rav7w"]
+font = ExtResource("1_10n32")
+font_size = 64
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_742re"]
+
+[node name="GameOverOverLay" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rav7w")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 12
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+z_index = 12
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+z_index = 12
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_742re")
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+z_index = 12
+layout_mode = 2
+text = "you lasted: "
+label_settings = SubResource("LabelSettings_rav7w")
+script = ExtResource("2_742re")
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Try Again?"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.4390491, 0.43904912, 0.43904912, 0.17254902)
+z_index = 11
+position = Vector2(615, 307)
+scale = Vector2(2000, 1000)
+texture = SubResource("CanvasTexture_742re")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
